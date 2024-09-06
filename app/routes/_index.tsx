@@ -7,11 +7,11 @@ import { Form, Outlet, redirect } from '@remix-run/react';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Dummy Marketplace' },
+    { title: 'Misc Marketplace' },
     {
       name: 'description',
       content:
-        'Dummy Marketplace - Application created with Remix, TypeScript and DummyJSON REST API',
+        'Misc Marketplace - Application created with Remix, TypeScript and DummyJSON REST API',
     },
   ];
 };
@@ -27,7 +27,7 @@ export default function Index() {
     <div>
       <section className='text-center max-w-1/2'>
         <div className='mt-6 mb-9'>
-          <h2 className='font-serif-fancy text-4xl text-primary mb-6'>
+          <h2 className='font-serif text-2xl lg:text-4xl text-primary mb-6 transition-all'>
             Find Everything You Need
           </h2>
           <Form

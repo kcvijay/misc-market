@@ -14,7 +14,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       { products, query },
       {
         headers: {
-          'Cache-Control': 'public, max-age=600',
+          'Cache-Control': 'public, max-age=60',
         },
       }
     );
@@ -57,9 +57,15 @@ const Products = () => {
         </Form>
       </div>
       <section className='h-full flex flex-wrap gap-6'>
-        {products.map((product: Product) => (
-          <ProductCard key={product.title} product={product} />
-        ))}
+        {products.length > 0 ? (
+          products.map((product: Product) => (
+            <ProductCard key={product.title} product={product} />
+          ))
+        ) : (
+          <p className='w-full text-center text-slate-800'>
+            No product found for the search term '{query}'.
+          </p>
+        )}
       </section>
     </div>
   );
