@@ -1,6 +1,10 @@
-export const getAllProducts = async (query: string) => {
+export const getAllProducts = async (
+  query: string,
+  limit: string,
+  skip: string
+) => {
   const response = await fetch(
-    `https://dummyjson.com/products/search?q=${query}&limit=12&skip=0`
+    `https://dummyjson.com/products/search?q=${query}&limit=${limit}&skip=${skip}`
   );
   return response.json();
 };
