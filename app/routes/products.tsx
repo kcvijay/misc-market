@@ -10,7 +10,14 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   try {
     const allProducts = await getAllProducts(query);
     const products = allProducts.products;
-    return json({ products, query });
+    return json(
+      { products, query },
+      {
+        headers: {
+          'Cache-Control': 'public, max-age=600',
+        },
+      }
+    );
   } catch (error) {
     return { error: 'Failed to get products' };
   }
@@ -19,7 +26,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export const action = async ({ request }: LoaderFunctionArgs) => {
   const searchParams = new URL(request.url).searchParams;
   const query = searchParams.get('query') || '';
-  redirect(`/products?query=${query}`);
+  return redirect(`/products?query=${query}`);
 };
 
 const Products = () => {
@@ -27,7 +34,6 @@ const Products = () => {
     products: Product[];
     query: string;
   };
-
   return (
     <div className='h-full'>
       <div className='flex justify-center items-center mt-3 mb-9'>

@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#d4a373',
+        primary: '#dda15e',
         secondary: '#ccd5ae',
         'primary-light': '#faedcd',
         'secondary-light': '#e9edc9',
@@ -19,6 +19,14 @@ export default {
       sans: ['Quicksand', 'system-ui', 'sans-serif'],
       serif: [
         'Lora',
+        'Georgia',
+        'Cambria',
+        'Times New Roman',
+        'Times',
+        'serif',
+      ],
+      'serif-fancy': [
+        'Bodoni Moda SC',
         'Georgia',
         'Cambria',
         'Times New Roman',

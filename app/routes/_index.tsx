@@ -24,18 +24,16 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
 export default function Index() {
   return (
-    <div className='bg-home-image font-serif flex-grow grid place-content-center text-center'>
-      <section className='p-12 bg-primary-light shadow'>
-        <div className='mb-6'>
-          <h2 className='text-primary text-xl sm:text-2xl md:text-4xl font-bold mb-4'>
-            A to Z
+    <div>
+      <section className='text-center max-w-1/2'>
+        <div className='mt-6 mb-9'>
+          <h2 className='font-serif-fancy text-4xl text-primary mb-6'>
+            Find Everything You Need
           </h2>
-          <p className='text-base md:text-xl'>
-            Find everything, in Dummy Marketplace
-          </p>
-        </div>
-        <div>
-          <Form method='post' className='flex items-center gap-3 mb-6'>
+          <Form
+            method='post'
+            className='max-w-72 flex items-center justify-center mx-auto gap-3'
+          >
             <input
               type='search'
               name='query'
@@ -51,9 +49,30 @@ export default function Index() {
             </button>
           </Form>
         </div>
+        <ResponsiveHero />
       </section>
-
-      <Outlet />
     </div>
   );
 }
+
+const ResponsiveHero = () => {
+  return (
+    <figure className='h-full flex gap-6 justify-center flex-wrap'>
+      <img
+        src='shopping-bags.jpg'
+        alt='A model with shopping bags'
+        className='hidden grow md:block w-36 max-h-[400px] object-cover'
+      />
+      <img
+        src='products.jpg'
+        alt='All kinds of beauty products'
+        className='grow w-56 max-w-full max-h-[400px] object-cover'
+      />
+      <img
+        src='makeup.jpg'
+        alt='Makeup kits'
+        className='hidden grow min-w-56 max-h-[400px] sm:block object-cover'
+      />
+    </figure>
+  );
+};
