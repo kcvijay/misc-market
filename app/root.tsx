@@ -4,20 +4,24 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react";
-import "./tailwind.css";
+} from '@remix-run/react';
+import './tailwind.css';
+import { Header } from './components/global/Header';
+import Footer from './components/global/Footer';
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet='utf-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body className='h-screen'>
+        <Header />
+        <main className='flex-1 p-6 min-h-[calc(100dvh-14rem)] max-w-[1200px] mx-auto'>{children}</main>
+        <Footer />
         <ScrollRestoration />
         <Scripts />
       </body>

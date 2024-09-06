@@ -7,7 +7,6 @@ export default {
     fontFamily: {
       sans: ['Lato', 'system-ui', 'sans-serif'],
     },
-    colors: {},
   },
   plugins: [],
 } satisfies Config;
