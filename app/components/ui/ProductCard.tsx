@@ -12,6 +12,15 @@ const ProductCard = ({
   product: Product | CartProduct;
   length: number;
 }) => {
+  const handleAddToCart = (
+    // Prevents redirectio to product page on cart button click.
+    e: React.MouseEvent<HTMLButtonElement>,
+    product: CartProduct
+  ) => {
+    e.preventDefault();
+    addToCart(product);
+  };
+
   return (
     <Link
       to={`/products/${product.id}`}
@@ -32,7 +41,9 @@ const ProductCard = ({
       <section className='relative bg-primary/10 group-hover:bg-primary/15 p-6'>
         <div className='flex justify-between items-center mb-3'>
           <p className='font-serif text-2xl text-primary'>{product.price}</p>
-          <AddCartBtnSmall onClick={() => addToCart(product as CartProduct)} />
+          <AddCartBtnSmall
+            onClick={(e) => handleAddToCart(e, product as CartProduct)}
+          />
         </div>
 
         <div>
