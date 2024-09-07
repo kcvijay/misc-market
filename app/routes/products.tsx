@@ -29,7 +29,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
 export const action = async ({ request }: LoaderFunctionArgs) => {
   const formData = await request.formData();
-  const query = formData.get('query') || '';
+  const query = formData.get('search') || '';
   return redirect(`/products?query=${query}&page=1`);
 };
 
@@ -47,8 +47,6 @@ const Products = () => {
   const nextPage = String(Number(currentPage) + 1);
   const prevPage = String(Number(currentPage) - 1);
 
-  console.log(currentPage, totalPages);
-
   return (
     <div className='h-full'>
       <div className='flex justify-center items-center mt-3 mb-9'>
@@ -58,7 +56,7 @@ const Products = () => {
         >
           <input
             type='search'
-            name='query'
+            name='search'
             placeholder='Search products...'
             defaultValue={query}
             className='grow py-2 px-4 text-primary border border-primary focus:outline focus:outline-2 focus:outline-primary outline-offset-1 rounded-full'

@@ -2,12 +2,13 @@ import { Product } from '~/utils/misc/types';
 import CartIcon from '../icons/CartIcon';
 import { Form, Link } from '@remix-run/react';
 import AddCartButton from './AddCartButton';
+import { addToCart, CartProduct } from '~/utils/methods/cart';
 
 const ProductCard = ({
   product,
   length,
 }: {
-  product: Product;
+  product: Product | CartProduct;
   length: number;
 }) => {
   return (
@@ -27,18 +28,18 @@ const ProductCard = ({
           className='h-40 w-full object-contain flex justify-center items-center drop-shadow-2xl'
         />
       </section>
-      <section className='relative bg-primary/10 group-hover:bg-primary/15'>
-        <Form
-          method='post'
-          className='absolute -top-4 right-6 flex items-center gap-3'
-        >
-          <input type='hidden' name='productId' value={product.id} />
-          <AddCartButton />
-        </Form>
-        <div className='p-6'>
-          <p className='font-serif text-2xl text-primary mb-3'>
-            {product.price}
-          </p>
+      <section className='relative bg-primary/10 group-hover:bg-primary/15 p-6'>
+        <div className='flex justify-between items-center mb-3'>
+          <p className='font-serif text-2xl text-primary'>{product.price}</p>
+          <button
+            onClick={() => addToCart(product as CartProduct)}
+            className='bg-primary flex justify-center items-center p-1 text-white size-[1.85rem] outline outline-2 outline-primary outline-offset-1 hover:bg-primary/90'
+          >
+            <CartIcon className='size-5' />
+          </button>
+        </div>
+
+        <div>
           <h3 className='font-serif text-lg text-primary mb-3 line-clamp-1'>
             {product.title}
           </h3>
