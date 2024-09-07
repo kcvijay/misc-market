@@ -10,10 +10,16 @@ export const Header = () => {
           </NavLink>
         </nav>
         <nav className='flex items-center gap-6 text-lg'>
-          <NavLink to='/products' className=''>
+          <NavLink
+            to='/products'
+            className={({ isActive }) => (isActive ? 'font-bold' : '')}
+          >
             Products
           </NavLink>
-          <NavLink to='/cart' className=''>
+          <NavLink
+            to='/cart'
+            className={({ isActive }) => (isActive ? 'font-bold' : '')}
+          >
             Cart
           </NavLink>
         </nav>
