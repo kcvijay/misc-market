@@ -23,9 +23,6 @@ const CartItem = ({
             alt={product.title}
             className='w-full h-full object-contain'
           />
-          <span className='absolute flex justify-center items-center text-sm size-[1.75rem] -top-2 -right-2 bg-white text-primary'>
-            &times; {product.cartQuantity}
-          </span>
         </figure>
         <div className='w-[300px]'>
           <Link
@@ -53,6 +50,11 @@ const CartItem = ({
         </button>
       </section>
       <section className='self-center w-16 text-right'>
+        <p className='text-slate-600 text-sm'>
+          <span>
+            {product.price} &times; {product.cartQuantity}
+          </span>
+        </p>
         <p className='text-lg font-serif text-primary'>
           {(product.price * product.cartQuantity).toFixed(2)}
         </p>

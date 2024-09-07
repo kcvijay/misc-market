@@ -1,5 +1,6 @@
 import { Form, json, useLoaderData } from '@remix-run/react';
 import CartIcon from '~/components/icons/CartIcon';
+import AddCartBtnBig from '~/components/ui/AddCartBtnBig';
 import Reviews from '~/components/ui/Reviews';
 import { getProductById } from '~/utils/methods/actions';
 import { addToCart, CartProduct } from '~/utils/methods/cart';
@@ -61,13 +62,9 @@ const ProductId = () => {
               </div>
             </div>
             <div className='flex items-start gap-3'>
-              <button
-                className='flex gap-2 items-center bg-primary text-white py-2 pr-3 pl-3 rounded-full outline outline-1 outline-primary outline-offset-2'
+              <AddCartBtnBig
                 onClick={() => addToCart(product as CartProduct)}
-              >
-                <span>Shop</span>
-                <CartIcon className='size-5' />
-              </button>
+              />
             </div>
           </section>
           <p className='tracking-wide text-slate-700'>{description}</p>
