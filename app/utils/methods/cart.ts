@@ -55,3 +55,13 @@ export const clearCart = async () => {
     window.dispatchEvent(new CustomEvent('cart_changed'));
   }
 };
+
+export const totalCartAmount = () => {
+  const cart = JSON.parse(localStorage.getItem('misc_market_cart') || '[]');
+  return cart
+    .reduce(
+      (acc: number, item: CartProduct) => acc + item.price * item.cartQuantity,
+      0
+    )
+    .toFixed(2);
+};

@@ -15,9 +15,9 @@ const CartItem = ({
   removeFromCart: () => void;
 }) => {
   return (
-    <div className='flex justify-between items-start flex-wrap py-4 border-b border-b-primary/50'>
+    <div className='font-sans flex justify-between items-start flex-wrap even:bg-primary-light/15 p-4 border-b border-b-primary/50'>
       <section className='flex gap-6'>
-        <figure className='relative size-16 bg-primary-light'>
+        <figure className='relative size-16'>
           <img
             src={product.thumbnail}
             alt={product.title}
@@ -27,7 +27,7 @@ const CartItem = ({
         <div className='w-[300px]'>
           <Link
             to={`/products/${product.id}`}
-            className='font-serif text-lg text-primary line-clamp-1 hover:underline'
+            className='text-lg text-primary line-clamp-1 hover:underline'
           >
             {product.title}
           </Link>
@@ -55,7 +55,7 @@ const CartItem = ({
             {product.price} &times; {product.cartQuantity}
           </span>
         </p>
-        <p className='text-lg font-serif text-primary'>
+        <p className='text-lg text-primary'>
           {(product.price * product.cartQuantity).toFixed(2)}
         </p>
       </section>

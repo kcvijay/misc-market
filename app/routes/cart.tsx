@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import ChevronRight from '~/components/icons/ChevronRight';
 import CartItem from '~/components/ui/CartItem';
 import {
   addToCart,
   CartProduct,
   clearCart,
   removeOneFromCart,
+  totalCartAmount,
 } from '~/utils/methods/cart';
 
 const Cart = () => {
@@ -35,7 +37,9 @@ const Cart = () => {
   return (
     <div>
       <header>
-        <h2 className='font-serif text-lg text-primary mb-3'>My Cart</h2>
+        <h2 className='font-serif text-lg text-center text-primary mb-3'>
+          My Cart
+        </h2>
         <hr className='border-primary/50' />
       </header>
       <div>
@@ -49,13 +53,22 @@ const Cart = () => {
                 removeFromCart={() => handleRemoveOneFromCart(product)}
               />
             ))}
-            <div className=''>
+            <div className='flex justify-between items-start'>
               <button
                 onClick={handleClearCart}
-                className='text-primary p-3 rounded-full mt-6'
+                className='text-primary p-3 rounded-full'
               >
                 Clear Cart
               </button>
+              <div className='flex flex-col text-lg text-primary gap-3 font-bold p-4'>
+                <div>
+                  <p>Total {totalCartAmount()}</p>
+                </div>
+                <button className='flex items-center gap-1 bg-primary text-white py-2 pr-3 pl-4 rounded-full'>
+                  <span>Checkout</span>
+                  <ChevronRight className='size-4' />
+                </button>
+              </div>
             </div>
           </div>
         ) : (

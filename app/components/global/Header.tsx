@@ -12,7 +12,7 @@ export const Header = () => {
             Misc. Market
           </NavLink>
         </nav>
-        <nav className='flex items-center gap-6 text-lg'>
+        <nav className='font-sans flex items-center gap-6 text-lg'>
           <NavLink
             to='/products'
             className={({ isActive }) => (isActive ? 'font-bold' : '')}
@@ -26,7 +26,7 @@ export const Header = () => {
             }
           >
             Cart
-            <span className='absolute font-sans font-thin -top-4 -right-4 size-6 text-center bg-primary text-white text-xs rounded-full p-1'>
+            <span className='absolute font-thin -top-4 -right-4 size-6 text-center bg-primary text-white text-xs rounded-full p-1'>
               {cartItems}
             </span>
           </NavLink>
