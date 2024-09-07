@@ -13,10 +13,23 @@ export const addToCart = async (product: CartProduct) => {
     (item: { id: number }) => item.id === product.id
   );
 
-  if (productInCart) {
-    productInCart.cartQuantity += 1;
-  } else {
+  const isInStock = product.stock > 0;
+  const isEnoughStock = productInCart
+    ? productInCart.stock > productInCart.cartQuantity
+    : true;
+
+  if (productInCart && isInStock) {
+    if (isEnoughStock) {
+      productInCart.cartQuantity += 1;
+    } else {
+      alert('The product is out of stock.');
+      return;
+    }
+  } else if (isInStock) {
     existingCart.push({ ...product, cartQuantity: 1 });
+  } else {
+    alert('The product is out of stock.');
+    return;
   }
   localStorage.setItem('misc_market_cart', JSON.stringify(existingCart));
   window.dispatchEvent(new CustomEvent('cart_changed'));

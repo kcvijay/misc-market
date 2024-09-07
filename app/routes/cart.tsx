@@ -61,7 +61,7 @@ const Cart = () => {
                 Clear Cart
               </button>
               <div className='flex flex-col text-lg text-primary gap-3 font-bold p-4'>
-                <div>
+                <div className='text-right'>
                   <p>Total {totalCartAmount()}</p>
                 </div>
                 <button className='flex items-center gap-1 bg-primary text-white py-2 pr-3 pl-4 rounded-full'>
