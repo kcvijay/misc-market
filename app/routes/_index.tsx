@@ -7,11 +7,11 @@ import { Form, Outlet, redirect } from '@remix-run/react';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Misc Marketplace' },
+    { title: 'Misc. Marketplace' },
     {
       name: 'description',
       content:
-        'Misc Marketplace - Application created with Remix, TypeScript and DummyJSON REST API',
+        'Misc. Marketplace - Application created with Remix, TypeScript and DummyJSON REST API',
     },
   ];
 };

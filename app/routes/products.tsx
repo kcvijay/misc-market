@@ -71,10 +71,16 @@ const Products = () => {
           </button>
         </Form>
       </div>
-      <section className='h-full flex flex-wrap gap-6'>
+      <section
+        className={`${products.length > 3 ? 'grid-responsive' : 'flex gap-6'}`}
+      >
         {products.length > 0 ? (
           products.map((product: Product) => (
-            <ProductCard key={product.title} product={product} />
+            <ProductCard
+              key={product.title}
+              product={product}
+              length={products.length}
+            />
           ))
         ) : (
           <p className='w-full text-center text-slate-800'>

@@ -6,7 +6,7 @@ export const Header = () => {
       <section className='flex justify-between items-center max-w-[1200px] mx-auto'>
         <nav>
           <NavLink to='/' className='text-2xl'>
-            Misc Market
+            Misc. Market
           </NavLink>
         </nav>
         <nav className='flex items-center gap-6 text-lg'>
