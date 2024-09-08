@@ -8,7 +8,7 @@ export const Header = () => {
     <header className='font-serif h-16 p-6 bg-primary-light/25 text-primary border-b border-b-primary/50'>
       <section className='flex justify-between items-center max-w-[1200px] mx-auto'>
         <nav>
-          <NavLink to='/' className='text-2xl'>
+          <NavLink to='/' className='text-xl md:text-2xl'>
             Misc. Market
           </NavLink>
         </nav>

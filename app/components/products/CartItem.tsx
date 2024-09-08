@@ -15,7 +15,7 @@ const CartItem = ({
   removeFromCart: () => void;
 }) => {
   return (
-    <div className='font-sans flex justify-between items-start flex-wrap even:bg-primary-light/15 p-4 border-b border-b-primary/50'>
+    <div className='font-sans flex justify-between items-start gap-6 flex-wrap even:bg-primary-light/15 p-4 border-b border-b-primary/50'>
       <section className='flex gap-6'>
         <figure className='relative size-16'>
           <img
@@ -24,7 +24,7 @@ const CartItem = ({
             className='w-full h-full object-contain'
           />
         </figure>
-        <div className='w-[300px]'>
+        <div className='min-w-[250px] max-w-[300px]'>
           <Link
             to={`/products/${product.id}`}
             className='text-lg text-primary line-clamp-1 hover:underline'
@@ -35,7 +35,7 @@ const CartItem = ({
         </div>
       </section>
 
-      <section className='flex self-center'>
+      <section className='flex self-center w-40'>
         <button
           className='w-12 h-[1.75rem] text-lg flex justify-center items-center bg-primary text-white rounded-tl-full rounded-bl-full border-r'
           onClick={removeFromCart}
