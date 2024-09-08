@@ -4,18 +4,21 @@ import ProductCard from '~/components/ui/ProductCard';
 import { getAllProducts } from '~/utils/methods/actions';
 import { Product } from '~/utils/misc/types';
 import Pagination from '~/components/ui/Pagination';
+import ShowingResult from '~/components/ui/ShowingResults';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const searchParams = new URL(request.url).searchParams;
   const query = searchParams.get('query') || '';
   const currentPage = searchParams.get('page') || '1';
-  const skip = String((Number(currentPage) - 1) * 12) || '0';
+  const productsPerPage = 12;
+  const skip = String((Number(currentPage) - 1) *  productsPerPage) || '0';
 
   try {
-    const allProducts = await getAllProducts(query, '12', skip);
+    const allProducts = await getAllProducts(query, productsPerPage.toString(), skip);
+    const total = allProducts.total;
     const products = allProducts.products;
     return json(
-      { allProducts, products, query, currentPage },
+      { allProducts, total, products, query, productsPerPage,currentPage },
       {
         headers: {
           'Cache-Control': 'public, max-age=60',
@@ -34,18 +37,25 @@ export const action = async ({ request }: LoaderFunctionArgs) => {
 };
 
 const Products = () => {
-  const { allProducts, products, query, currentPage } = useLoaderData<
+  const { allProducts, total, products, query, productsPerPage, currentPage } = useLoaderData<
     typeof loader
   >() as {
     allProducts: { total: number; products: Product[] };
+    total: number;
     products: Product[];
     query: string;
+    productsPerPage: number;
     currentPage: string;
   };
 
+  /* Pagination */
   const totalPages = Math.ceil(allProducts.total / 12);
   const nextPage = String(Number(currentPage) + 1);
   const prevPage = String(Number(currentPage) - 1);
+
+  /* Results */
+  const resultStartFrom = (Number(currentPage) - 1) * productsPerPage + 1;
+  const resultEndTo = Number(currentPage) * productsPerPage;
 
   return (
     <div className='h-full'>
@@ -69,23 +79,33 @@ const Products = () => {
           </button>
         </Form>
       </div>
-      <section
-        className={`${products.length > 3 ? 'grid-responsive' : 'flex gap-6'}`}
-      >
-        {products.length > 0 ? (
-          products.map((product: Product) => (
-            <ProductCard
-              key={product.title}
-              product={product}
-              length={products.length}
-            />
-          ))
-        ) : (
-          <p className='w-full text-center text-slate-800'>
-            No product found for the search term '{query}'.
-          </p>
-        )}
-      </section>
+      {products.length > 0 ? (
+        <section>
+          <ShowingResult
+            total={total}
+            from={resultStartFrom}
+            to={resultEndTo}
+          />
+          <div
+            className={`${
+              products.length > 3 ? 'grid-responsive' : 'flex gap-6'
+            }`}
+          >
+            {products.map((product: Product) => (
+              <ProductCard
+                key={product.title}
+                product={product}
+                length={products.length}
+              />
+            ))}
+          </div>
+        </section>
+      ) : (
+        <p className='w-full text-center text-slate-800'>
+          No product found for the search term '{query}'.
+        </p>
+      )}
+
       {products.length > 1 && (
         <Pagination
           query={query}

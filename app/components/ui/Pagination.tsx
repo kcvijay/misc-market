@@ -18,7 +18,7 @@ const Pagination = ({
   const isFirstPage = parseInt(currentPage) === 1;
   const isLastPage = parseInt(currentPage) === totalPages;
   return (
-    <div className='relative flex justify-between items-center mt-12 gap-6'>
+    <div className='relative flex justify-between items-center mt-6 gap-6'>
       {isFirstPage ? (
         <span className='disabled-button inline-flex items-center gap-1 bg-primary/50 text-white py-2 pl-3 pr-4 rounded-full cursor-not-allowed'>
           <ChevronLeft className='size-4' />
@@ -33,7 +33,7 @@ const Pagination = ({
           <span>Prev</span>
         </Link>
       )}
-      <span className='bg-primary/50 h-[1px] grow' />
+      <span className='h-[1px] bg-primary/50 w-full' />
       {isLastPage ? (
         <span className='disabled-button inline-flex items-center gap-1 bg-primary/50 text-white py-2 pr-3 pl-4 rounded-full cursor-not-allowed z-10'>
           <span>Next</span>
