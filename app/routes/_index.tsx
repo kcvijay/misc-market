@@ -19,8 +19,8 @@ export const meta: MetaFunction = () => {
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
-  const query = formData.get('query') || '';
-  return redirect(`/products?query=${query}`);
+  const query = formData.get('search') || '';
+  return redirect(`/products?query=${query}&page=1`);
 };
 
 export default function Index() {
