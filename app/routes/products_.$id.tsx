@@ -1,7 +1,7 @@
 import { Form, json, useLoaderData } from '@remix-run/react';
 import CartIcon from '~/components/icons/CartIcon';
 import AddCartBtnBig from '~/components/ui/AddCartBtnBig';
-import Reviews from '~/components/ui/Reviews';
+import Reviews from '~/components/products/Reviews';
 import { getProductById } from '~/utils/methods/actions';
 import { addToCart, CartProduct } from '~/utils/methods/cart';
 import { roundFigure } from '~/utils/misc/prices';

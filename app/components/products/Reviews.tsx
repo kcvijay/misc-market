@@ -1,5 +1,5 @@
 import { formatDate } from '~/utils/misc/dates';
-import RatingStars from '~/components/ui/RatingStars';
+import RatingStars from '~/components/products/RatingStars';
 
 const Reviews = ({ reviews }: { reviews: any }) => {
   return (

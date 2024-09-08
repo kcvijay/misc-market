@@ -1,9 +1,9 @@
 import { Product } from '~/utils/misc/types';
 import CartIcon from '../icons/CartIcon';
 import { Form, Link } from '@remix-run/react';
-import AddCartButton from './AddCartBtnSmall';
+import AddCartButton from '../ui/AddCartBtnSmall';
 import { addToCart, CartProduct } from '~/utils/methods/cart';
-import AddCartBtnSmall from './AddCartBtnSmall';
+import AddCartBtnSmall from '../ui/AddCartBtnSmall';
 
 const ProductCard = ({
   product,

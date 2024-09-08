@@ -1,6 +1,8 @@
 import { Link } from '@remix-run/react';
 import ChevronLeft from '../icons/ChevronLeft';
 import ChevronRight from '../icons/ChevronRight';
+import PaginationLink from '../ui/PaginationLink';
+import DisabledPaginationLink from '../ui/DisabledPaginationLink';
 
 const Pagination = ({
   query,
@@ -20,33 +22,27 @@ const Pagination = ({
   return (
     <div className='relative flex justify-between items-center mt-6 gap-6'>
       {isFirstPage ? (
-        <span className='disabled-button inline-flex items-center gap-1 bg-primary/50 text-white py-2 pl-3 pr-4 rounded-full cursor-not-allowed'>
+        <DisabledPaginationLink>
           <ChevronLeft className='size-4' />
           <span>Prev</span>
-        </span>
+        </DisabledPaginationLink>
       ) : (
-        <Link
-          to={`/products?query=${query}&page=${prevPage}`}
-          className='flex items-center gap-1 bg-primary text-white py-2 pl-3 pr-4 rounded-full'
-        >
+        <PaginationLink to={`/products?query=${query}&page=${prevPage}`}>
           <ChevronLeft className='size-4' />
           <span>Prev</span>
-        </Link>
+        </PaginationLink>
       )}
-      <span className='h-[1px] bg-primary/50 w-full' />
+      <span className='line h-[1px] bg-primary/50 w-full' />
       {isLastPage ? (
-        <span className='disabled-button inline-flex items-center gap-1 bg-primary/50 text-white py-2 pr-3 pl-4 rounded-full cursor-not-allowed z-10'>
+        <DisabledPaginationLink>
           <span>Next</span>
           <ChevronRight className='size-4' />
-        </span>
+        </DisabledPaginationLink>
       ) : (
-        <Link
-          to={`/products?query=${query}&page=${nextPage}`}
-          className='flex items-center gap-1 bg-primary text-white py-2 pr-3 pl-4 rounded-full z-10'
-        >
+        <PaginationLink to={`/products?query=${query}&page=${nextPage}`}>
           <span>Next</span>
           <ChevronRight className='size-4' />
-        </Link>
+        </PaginationLink>
       )}
     </div>
   );

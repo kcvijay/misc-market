@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import ChevronRight from '~/components/icons/ChevronRight';
-import CartItem from '~/components/ui/CartItem';
+import CartItem from '~/components/products/CartItem';
 import {
   addToCart,
   CartProduct,

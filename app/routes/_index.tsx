@@ -4,6 +4,7 @@ import type {
   MetaFunction,
 } from '@remix-run/node';
 import { Form, Outlet, redirect } from '@remix-run/react';
+import SearchForm from '~/components/form/SearchForm';
 
 export const meta: MetaFunction = () => {
   return [
@@ -30,24 +31,9 @@ export default function Index() {
           <h2 className='font-serif text-2xl lg:text-4xl text-primary mb-6 transition-all'>
             Find Everything You Need
           </h2>
-          <Form
-            method='post'
-            className='max-w-72 flex items-center justify-center mx-auto gap-3'
-          >
-            <input
-              type='search'
-              name='query'
-              placeholder='Search products...'
-              required
-              className='grow py-2 px-4 text-primary border border-primary rounded-full focus:outline focus:outline-2 focus:outline-primary outline-offset-1'
-            />
-            <button
-              type='submit'
-              className='bg-primary text-white py-2 px-4 rounded-full'
-            >
-              Search
-            </button>
-          </Form>
+          <div className='flex justify-center'>
+            <SearchForm />
+          </div>
         </div>
         <ResponsiveHero />
       </section>
