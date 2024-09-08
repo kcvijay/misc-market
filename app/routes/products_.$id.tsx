@@ -31,6 +31,8 @@ const ProductId = () => {
     availabilityStatus,
     stock,
     reviews,
+    returnPolicy,
+    meta
   } = product;
   return (
     <div>
@@ -67,7 +69,8 @@ const ProductId = () => {
               />
             </div>
           </section>
-          <p className='tracking-wide text-slate-700'>{description}</p>
+          <p className='tracking-wide text-slate-700 mb-6'>{description}</p>
+          <p className='text-sm text-slate-600'>Product No. {meta.barcode}</p>
         </div>
 
         <aside className='md:sticky md:top-6 h-full md:bg-primary-light/50 md:p-6'>
@@ -81,7 +84,11 @@ const ProductId = () => {
             <hr className='border-primary' />
             <p className='mt-2 text-slate-600'>{shippingInformation}</p>
           </div>
-
+          <div className='mb-6'>
+            <h3 className='mb-2 font-serif text-lg text-primary'>Return Policy</h3>
+            <hr className='border-primary' />
+            <p className='mt-2 text-slate-600'>{returnPolicy}</p>
+          </div>
           <div className='mb-6'>
             <h3 className='mb-2 font-serif text-lg text-primary'>Dimension</h3>
             <hr className='border-primary' />

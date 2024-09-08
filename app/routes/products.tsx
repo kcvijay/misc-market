@@ -106,7 +106,7 @@ const Products = () => {
         </p>
       )}
 
-      {products.length > 1 && (
+      {allProducts.total > productsPerPage && (
         <Pagination
           query={query}
           currentPage={currentPage}
