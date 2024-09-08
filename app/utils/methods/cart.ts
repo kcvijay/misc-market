@@ -1,3 +1,4 @@
+import { showNotification } from '../misc/notification';
 import { Product } from '../misc/types';
 
 export interface CartProduct extends Product {
@@ -21,12 +22,14 @@ export const addToCart = async (product: CartProduct) => {
   if (productInCart && isInStock) {
     if (isEnoughStock) {
       productInCart.cartQuantity += 1;
+      showNotification('success', 'Item added to cart');
     } else {
       alert('The product is out of stock.');
       return;
     }
   } else if (isInStock) {
     existingCart.push({ ...product, cartQuantity: 1 });
+    showNotification('success', 'Item added to cart');
   } else {
     alert('The product is out of stock.');
     return;
