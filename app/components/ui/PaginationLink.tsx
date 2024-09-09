@@ -10,7 +10,7 @@ const PaginationLink = ({
   return (
     <Link
       to={to}
-      className='flex items-center gap-1 bg-primary text-white py-2 px-4 rounded-full'
+      className='flex items-center gap-2 bg-primary text-white py-2 px-4 rounded-full'
     >
       {children}
     </Link>
