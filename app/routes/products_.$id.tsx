@@ -1,18 +1,14 @@
 import {
-  Form,
-  isRouteErrorResponse,
   json,
   useLoaderData,
   useRouteError,
 } from '@remix-run/react';
-import CartIcon from '~/components/icons/CartIcon';
 import AddCartBtnBig from '~/components/ui/AddCartBtnBig';
 import Reviews from '~/components/products/Reviews';
 import { getProductById } from '~/utils/methods/actions';
 import { addToCart, CartProduct } from '~/utils/methods/cart';
 import { roundFigure } from '~/utils/misc/prices';
-import BreadCrumbs from '~/components/ui/Breadcrumbs';
-import XIcon from '~/components/icons/XIcon';
+import BreadCrumbs from '~/components/ui/BreadCrumbs';
 import ExclamationIcon from '~/components/icons/ExclamationIcon';
 
 export const loader = async ({ params }: { params: any }) => {
