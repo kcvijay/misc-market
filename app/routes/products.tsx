@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, LoaderFunctionArgs } from '@remix-run/node';
-import { json, redirect, useActionData, useLoaderData } from '@remix-run/react';
+import { json, redirect, useLoaderData, useRouteError } from '@remix-run/react';
 import ProductCard from '~/components/products/ProductCard';
 import { getAllProducts } from '~/utils/methods/actions';
 import { Product } from '~/utils/misc/types';
@@ -10,8 +10,8 @@ import AdjustmentsIcon from '~/components/icons/AdjustmentsIcon';
 import Filter from '~/components/products/Filter';
 import { useState } from 'react';
 import Sort from '~/components/products/Sort';
-import XIcon from '~/components/icons/XIcon';
-import BreadCrumbs from '~/components/ui/Breadcrumbs';
+import BreadCrumbs from '~/components/ui/BreadCrumbs';
+import ExclamationIcon from '~/components/icons/ExclamationIcon';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const searchParams = new URL(request.url).searchParams;
@@ -58,8 +58,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const query = formData.get('search') || '';
   const sortAndOrder = formData.get('sortAndOrder') || ''; // e.g. format, price:asc
-  const sortBy = String(sortAndOrder).split(':')[0] || ''; // e.g. price
-  const order = String(sortAndOrder).split(':')[1] || ''; // e.g. asc
 
   if (sortAndOrder !== '') {
     return redirect(`/products?query=${query}&sortBy=${sortAndOrder}&page=1`);
@@ -131,11 +129,12 @@ const Products = () => {
               <Sort query={query} sortAndOrder={sortAndOrder} />
             </div>
           </div>
-
           {showFilter && <Filter closeFilter={toggleFilter} />}
           <div
             className={`${
-              products.length > 3 ? 'map-result grid-responsive' : 'map-result flex gap-6 flex-wrap'
+              products.length > 3
+                ? 'map-result grid-responsive'
+                : 'map-result flex gap-6 flex-wrap'
             }`}
           >
             {products.map((product: Product) => (
@@ -166,17 +165,17 @@ const Products = () => {
   );
 };
 
-export const ErrorBoundary = (error: Error) => {
+export const ErrorBoundary = () => {
+  const error = useRouteError();
+
   return (
-    <div className='mx-auto flex flex-col items-center gap-4 bg-red-50 p-6 text-center'>
-      <p className='text-primary text-lg font-bold'>
-        Something unexpected happened !
-      </p>
-      <p className='p-2 size-16 rounded-full text-primary font-bold border-2 border-primary'>
-        <XIcon />
-      </p>
-      {error instanceof Error ? <p>{error.message}</p> : null}
-      <p>Please check the URL and try again !</p>
+    <div className='mx-auto text-center flex flex-col items-center gap-3 mt-6'>
+      <ExclamationIcon className='size-12 text-red-600/75' />
+      <h2 className='text-primary text-lg'>Something unexpected happened !</h2>
+      {error instanceof Error && (
+        <p className='text-slate-600 text-sm'>{error.message}</p>
+      )}
+      <p className='text-sm'>Please check the URL and refresh the page.</p>
     </div>
   );
 };

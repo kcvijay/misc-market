@@ -1,4 +1,10 @@
-import { Form, json, useLoaderData } from '@remix-run/react';
+import {
+  Form,
+  isRouteErrorResponse,
+  json,
+  useLoaderData,
+  useRouteError,
+} from '@remix-run/react';
 import CartIcon from '~/components/icons/CartIcon';
 import AddCartBtnBig from '~/components/ui/AddCartBtnBig';
 import Reviews from '~/components/products/Reviews';
@@ -6,6 +12,8 @@ import { getProductById } from '~/utils/methods/actions';
 import { addToCart, CartProduct } from '~/utils/methods/cart';
 import { roundFigure } from '~/utils/misc/prices';
 import BreadCrumbs from '~/components/ui/Breadcrumbs';
+import XIcon from '~/components/icons/XIcon';
+import ExclamationIcon from '~/components/icons/ExclamationIcon';
 
 export const loader = async ({ params }: { params: any }) => {
   const { id } = params;
@@ -122,6 +130,21 @@ const ProductId = () => {
           <Reviews reviews={reviews} />
         </section>
       </div>
+    </div>
+  );
+};
+
+export const ErrorBoundary = () => {
+  const error = useRouteError();
+
+  return (
+    <div className='mx-auto text-center flex flex-col items-center gap-3 mt-6'>
+      <ExclamationIcon className='size-12 text-red-600/75' />
+      <h2 className='text-primary text-lg'>Something unexpected happened !</h2>
+      {error instanceof Error && (
+        <p className='text-slate-600 text-sm'>{error.message}</p>
+      )}
+      <p className='text-sm'>Please check the URL and refresh the page.</p>
     </div>
   );
 };
