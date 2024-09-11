@@ -43,3 +43,9 @@ interface MetaData {
   barcode: string;
   qrCode: string; // URL to QR code
 }
+
+export interface BreadCrumbLinks {
+  title: string;
+  href: string;
+  isCurrentPage: boolean;
+}

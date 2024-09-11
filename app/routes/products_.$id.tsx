@@ -5,6 +5,7 @@ import Reviews from '~/components/products/Reviews';
 import { getProductById } from '~/utils/methods/actions';
 import { addToCart, CartProduct } from '~/utils/methods/cart';
 import { roundFigure } from '~/utils/misc/prices';
+import BreadCrumbs from '~/components/ui/Breadcrumbs';
 
 export const loader = async ({ params }: { params: any }) => {
   const { id } = params;
@@ -32,13 +33,20 @@ const ProductId = () => {
     stock,
     reviews,
     returnPolicy,
-    meta
+    meta,
   } = product;
   return (
     <div>
       <div className='grid grid-cols-1 md:grid-cols-[66.66%_33.33%] gap-6'>
         <div className='pr-6'>
-          <figure className='relative border border-primary/50 w-72 max-w-full mb-3'>
+          <BreadCrumbs
+            links={[
+              { title: 'Home', href: '/', isCurrentPage: false },
+              { title: 'Products', href: '/products', isCurrentPage: false },
+              { title: title, href: '', isCurrentPage: true },
+            ]}
+          />
+          <figure className='relative border border-primary/50 w-72 max-w-full mt-6 mb-3'>
             <img src={thumbnail} alt={title} />
             <figcaption className='absolute bottom-2 right-2 text-primary'>
               {brand}
@@ -85,7 +93,9 @@ const ProductId = () => {
             <p className='mt-2 text-slate-600'>{shippingInformation}</p>
           </div>
           <div className='mb-6'>
-            <h3 className='mb-2 font-serif text-lg text-primary'>Return Policy</h3>
+            <h3 className='mb-2 font-serif text-lg text-primary'>
+              Return Policy
+            </h3>
             <hr className='border-primary' />
             <p className='mt-2 text-slate-600'>{returnPolicy}</p>
           </div>
