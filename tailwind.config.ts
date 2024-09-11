@@ -11,7 +11,7 @@ export default {
         'secondary-light': '#e9edc9',
       },
       borderColor: {
-        primary: '#d4a373',
+        primary: '#bc6c25',
         secondary: '#ccd5ae',
       },
     },

@@ -24,14 +24,14 @@ export const addToCart = async (product: CartProduct) => {
       productInCart.cartQuantity += 1;
       showNotification('success', 'Item added to cart');
     } else {
-      alert('The product is out of stock.');
+      showNotification('error', 'Product is out of stock');
       return;
     }
   } else if (isInStock) {
     existingCart.push({ ...product, cartQuantity: 1 });
     showNotification('success', 'Item added to cart');
   } else {
-    alert('The product is out of stock.');
+    showNotification('error', 'Product is out of stock');
     return;
   }
   localStorage.setItem('misc_market_cart', JSON.stringify(existingCart));

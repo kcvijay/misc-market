@@ -1,4 +1,3 @@
-import { Link } from '@remix-run/react';
 import ChevronLeft from '../icons/ChevronLeft';
 import ChevronRight from '../icons/ChevronRight';
 import PaginationLink from '../ui/PaginationLink';

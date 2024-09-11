@@ -1,10 +1,12 @@
 export const getAllProducts = async (
   query: string,
   limit: string,
-  skip: string
+  skip: string,
+  sortBy: string,
+  order: string
 ) => {
   const response = await fetch(
-    `https://dummyjson.com/products/search?q=${query}&limit=${limit}&skip=${skip}`
+    `https://dummyjson.com/products/search?q=${query}&limit=${limit}&skip=${skip}&sortBy=${sortBy}&order=${order}`
   );
   return response.json();
 };
