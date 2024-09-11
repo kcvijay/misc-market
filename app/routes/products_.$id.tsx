@@ -42,7 +42,7 @@ const ProductId = () => {
   return (
     <div>
       <div className='grid grid-cols-1 md:grid-cols-[66.66%_33.33%] gap-6'>
-        <div className='pr-6'>
+        <div>
           <BreadCrumbs
             links={[
               { title: 'Home', href: '/', isCurrentPage: false },
@@ -130,19 +130,19 @@ const ProductId = () => {
   );
 };
 
-export const ErrorBoundary = () => {
-  const error = useRouteError();
+// export const ErrorBoundary = () => {
+//   const error = useRouteError();
 
-  return (
-    <div className='mx-auto text-center flex flex-col items-center gap-3 mt-6'>
-      <ExclamationIcon className='size-12 text-red-600/75' />
-      <h2 className='text-primary text-lg'>Something unexpected happened !</h2>
-      {error instanceof Error && (
-        <p className='text-slate-600 text-sm'>{error.message}</p>
-      )}
-      <p className='text-sm'>Please check the URL and refresh the page.</p>
-    </div>
-  );
-};
+//   return (
+//     <div className='mx-auto text-center flex flex-col items-center gap-3 mt-6'>
+//       <ExclamationIcon className='size-12 text-red-600/75' />
+//       <h2 className='text-primary text-lg'>Something unexpected happened !</h2>
+//       {error instanceof Error && (
+//         <p className='text-slate-600 text-sm'>{error.message}</p>
+//       )}
+//       <p className='text-sm'>Please check the URL and refresh the page.</p>
+//     </div>
+//   );
+// };
 
 export default ProductId;

@@ -118,9 +118,9 @@ const Products = () => {
               from={resultStartFrom}
               to={resultEndTo}
             />
-            <div className='sort-and-order flex justify-end items-center gap-3'>
+            <div className='sort-and-order flex justify-end items-start gap-3'>
               <button
-                className='flex gap-2 items-center bg-primary text-primary-light py-1 px-2 shadow rounded hover:bg-primary/80 active:text-slate-600 hover:shadow-none'
+                className='flex gap-2 items-center bg-primary text-primary-light h-8 p-1.5 shadow rounded hover:bg-primary/80 active:text-slate-600 hover:shadow-none'
                 onClick={() => setShowFilter(true)}
               >
                 <AdjustmentsIcon className='size-5' />
@@ -165,19 +165,19 @@ const Products = () => {
   );
 };
 
-export const ErrorBoundary = () => {
-  const error = useRouteError();
+// export const ErrorBoundary = () => {
+//   const error = useRouteError();
 
-  return (
-    <div className='mx-auto text-center flex flex-col items-center gap-3 mt-6'>
-      <ExclamationIcon className='size-12 text-red-600/75' />
-      <h2 className='text-primary text-lg'>Something unexpected happened !</h2>
-      {error instanceof Error && (
-        <p className='text-slate-600 text-sm'>{error.message}</p>
-      )}
-      <p className='text-sm'>Please check the URL and refresh the page.</p>
-    </div>
-  );
-};
+//   return (
+//     <div className='mx-auto text-center flex flex-col items-center gap-3 mt-6'>
+//       <ExclamationIcon className='size-16 border-primary/75 text-primary' />
+//       <h2 className='text-primary text-lg'>Something unexpected happened !</h2>
+//       {error instanceof Error && (
+//         <p className='text-slate-600 text-sm'>{error.message}</p>
+//       )}
+//       <p className='text-sm'>Please check the URL and refresh the page.</p>
+//     </div>
+//   );
+// };
 
 export default Products;

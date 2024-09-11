@@ -8,7 +8,7 @@ const Sort = ({ query, sortAndOrder }: { query: string, sortAndOrder: string }) 
         name='sortAndOrder'
         id='sortAndOrder'
         value={sortAndOrder}
-        className='py-1 px-2 bg-primary text-primary-light shadow hover:shadow-none hover:bg-primary/80 active:text-slate-600 rounded'
+        className='h-8 p-1.5 bg-primary text-primary-light shadow hover:shadow-none hover:bg-primary/80 active:text-slate-600 rounded'
         onChange={(e) => e.currentTarget.form?.submit()}
       >
         <option value='' disabled>
